@@ -1,4 +1,23 @@
 // =============================================
+// HAMBURGER MENU
+// =============================================
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+// Close menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
+// =============================================
 // VIDEO CAROUSEL
 // =============================================
 const cards = document.querySelectorAll('.video-card');
