@@ -542,6 +542,20 @@ footer {
 
   nav { padding: 0 20px; }
 
+  /* Limit video player height on mobile so carousel is visible */
+  .video-player {
+    padding-top: 56.25%;
+    max-height: 240px;
+  }
+
+  .video-carousel-wrap {
+    margin-top: 12px;
+  }
+
+  .video-card {
+    width: 150px;
+  }
+
   .nav-toggle {
     display: flex;
     flex-direction: column;
