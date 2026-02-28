@@ -23,6 +23,7 @@ body {
   color: var(--text);
   font-size: 15px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* =========================================
@@ -351,6 +352,8 @@ main {
   margin-bottom: 14px;
   color: var(--text);
   line-height: 1.8;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .btn {
