@@ -2,18 +2,18 @@
 // HAMBURGER MENU
 // =============================================
 const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+const navMenu = document.getElementById('navLinks');
 
 navToggle.addEventListener('click', () => {
   navToggle.classList.toggle('open');
-  navLinks.classList.toggle('open');
+  navMenu.classList.toggle('open');
 });
 
 // Close menu when a link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
+navMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navToggle.classList.remove('open');
-    navLinks.classList.remove('open');
+    navMenu.classList.remove('open');
   });
 });
 
@@ -28,20 +28,20 @@ const nextBtn = document.querySelector('.carousel-btn.next');
 
 cards.forEach(card => {
   card.addEventListener('click', () => {
-    // Update active state
     cards.forEach(c => c.classList.remove('active'));
     card.classList.add('active');
 
-    // Swap the main player src
     const videoId = card.dataset.videoId;
-    mainPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+    // Use a fresh iframe src — works on both desktop and mobile
+    mainPlayer.src = '';
+    setTimeout(() => {
+      mainPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0`;
+    }, 50);
 
-    // Scroll card into view in the carousel
     card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
   });
 });
 
-// Scroll carousel buttons
 prevBtn.addEventListener('click', () => {
   carousel.scrollBy({ left: -220, behavior: 'smooth' });
 });
@@ -53,13 +53,13 @@ nextBtn.addEventListener('click', () => {
 // =============================================
 // NAV: highlight active section on scroll
 // =============================================
-const navLinks = document.querySelectorAll('.nav-links a');
+const navSectionLinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('main section, footer');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      navLinks.forEach(link => link.classList.remove('active'));
+      navSectionLinks.forEach(link => link.classList.remove('active'));
       const id = entry.target.id;
       const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
       if (activeLink) activeLink.classList.add('active');
