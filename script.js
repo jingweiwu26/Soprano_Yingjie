@@ -49,3 +49,17 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(section => observer.observe(section));
+
+// =============================================
+// NEWSLETTER FORM
+// =============================================
+const newsletterForm = document.getElementById('newsletterForm');
+const newsletterThanks = document.getElementById('newsletterThanks');
+
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    newsletterForm.style.display = 'none';
+    newsletterThanks.style.display = 'block';
+  });
+}
