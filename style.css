@@ -117,6 +117,12 @@ main {
   grid-template-columns: 280px 1fr;
   gap: 60px;
   align-items: start;
+  min-width: 0;
+}
+
+.main-col {
+  min-width: 0;
+  width: 100%;
 }
 
 /* =========================================
