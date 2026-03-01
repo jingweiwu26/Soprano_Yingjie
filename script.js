@@ -78,6 +78,14 @@ const newsletterThanks = document.getElementById('newsletterThanks');
 if (newsletterForm) {
   newsletterForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const email = newsletterForm.querySelector('input[type="email"]').value;
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfxxgUhh5uPjMLRLQr_7ebIeIo7yvGFhiVmHQCeuSn6XdmnDw/formResponse';
+    fetch(formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `entry.1919887796=${encodeURIComponent(email)}`
+    });
     newsletterForm.style.display = 'none';
     newsletterThanks.style.display = 'block';
   });
